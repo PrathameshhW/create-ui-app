@@ -7,14 +7,9 @@ export interface UserAnswers {
 }
 
 export async function askUser(): Promise<UserAnswers> {
-  const supportsInteractiveList =
-    Boolean(process.stdin.isTTY) &&
-    Boolean(process.stdout.isTTY) &&
-    process.env.TERM !== "dumb";
-
   const { framework } = await inquirer.prompt<{ framework: Framework }>([
     {
-      type: supportsInteractiveList ? "list" : "rawlist",
+      type: "rawlist",
       name: "framework",
       message: "Select a framework:",
       choices: Object.entries(boilerplates).map(([key, value]) => ({
