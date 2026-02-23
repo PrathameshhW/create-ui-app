@@ -4,6 +4,7 @@ export interface Boilerplate {
   name: string;
   repo: string;
   description: string;
+  comingSoon?: boolean;
 }
 
 export const boilerplates: Record<Framework, Boilerplate> = {
@@ -16,10 +17,12 @@ export const boilerplates: Record<Framework, Boilerplate> = {
     name: "Shadcn + Vite",
     repo: "github:your-username/shadcn-boilerplate",
     description: "React + Shadcn + Tailwind",
+    comingSoon: true,
   },
   antd: {
     name: "Ant Design",
     repo: "github:your-username/antd-boilerplate",
     description: "React + Antd + Vite",
+    comingSoon: true,
   },
 };

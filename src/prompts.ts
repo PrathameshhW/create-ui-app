@@ -7,17 +7,30 @@ export interface UserAnswers {
 }
 
 export async function askUser(): Promise<UserAnswers> {
-  const { framework } = await inquirer.prompt<{ framework: Framework }>([
-    {
-      type: "rawlist",
-      name: "framework",
-      message: "Select a framework:",
-      choices: Object.entries(boilerplates).map(([key, value]) => ({
-        name: `${value.name} - ${value.description}`,
-        value: key,
-      })),
-    },
-  ]);
+  let framework: Framework;
+
+  while (true) {
+    const answer = await inquirer.prompt<{ framework: Framework }>([
+      {
+        type: "rawlist",
+        name: "framework",
+        message: "Select a framework:",
+        choices: Object.entries(boilerplates).map(([key, value]) => ({
+          name: `${value.name} - ${value.description}${
+            value.comingSoon ? " (Coming soon)" : ""
+          }`,
+          value: key,
+        })),
+      },
+    ]);
+
+    if (!boilerplates[answer.framework].comingSoon) {
+      framework = answer.framework;
+      break;
+    }
+
+    console.log("This boilerplate is coming soon and cannot be selected yet.");
+  }
 
   const { projectName } = await inquirer.prompt<{ projectName: string }>([
     {
