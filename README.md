@@ -55,7 +55,11 @@ npx create-ui-app
 <!-- Add your demo video here later -->
 <!-- Example: [Watch Demo](https://your-video-link) -->
 
-_Demo video coming soon._
+
+https://github.com/user-attachments/assets/272da21b-fa00-49d6-8ecc-a42422f66852
+
+
+
 
 ## How It Works
 
